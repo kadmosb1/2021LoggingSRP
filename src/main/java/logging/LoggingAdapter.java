@@ -1,14 +1,10 @@
 package logging;
 
-import login.AuthenticationSimple;
-
 import java.io.*;
 import java.util.logging.FileHandler;
 import java.util.logging.Handler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
-import static logging.LoggingFormatter.getFormattedDate;
 
 public class LoggingAdapter {
 
@@ -31,7 +27,7 @@ public class LoggingAdapter {
      * Omdat we er in onze originele oplossing voor hadden gekozen om logs per dag te verzamelen, moeten we nog
      * steeds controleren of mogelijk een nieuwe dag is aangebroken (en dus een nieuwe logfile aangemaakt moet worden).
      */
-    private void checkLogFile () {
+    private void checkNextDay () {
 
         try {
 
@@ -60,7 +56,7 @@ public class LoggingAdapter {
 
     public void printLog (String message, Exception... e) {
 
-        checkLogFile();
+        checkNextDay();
 
         if (e.length != 0) {
             LOGGER.log (Level.SEVERE, message, e [0]);
