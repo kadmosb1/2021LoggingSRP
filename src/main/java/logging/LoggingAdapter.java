@@ -34,7 +34,7 @@ public class LoggingAdapter {
             LoggingFormatter formatter = new LoggingFormatter ();
 
             // Als de logfile nog niet bestaat, worden eventueel gekoppelde FileHandlers verwijderd.
-            if (formatter.logFileDoesNotExist ()) {
+            if (formatter.logFileIsEmpty()) {
                 for (Handler handler : LOGGER.getHandlers ()) {
                     handler.flush ();
                     LOGGER.removeHandler(handler);

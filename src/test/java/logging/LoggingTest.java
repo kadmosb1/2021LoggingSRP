@@ -15,10 +15,11 @@ class LoggingTest {
 
     @Test
     public void formatTest () {
+        LocalDateTime now = LocalDateTime.now ();
         AuthenticationSimple.getInstance ().authenticate ("user3", "3");
-        String expected = LoggingFormatter.getFormattedDateAndTime() + String.format (" %-20s ", "user3") + "test" + System.lineSeparator ();
+        String expected = LoggingFormatter.getFormattedDateAndTime (now) + String.format (" %-20s ", "user3") + "test" + System.lineSeparator ();
         LoggingFormatter formatter = new LoggingFormatter ();
-        String actual = formatter.format (new LogRecord (Level.WARNING, "test"));
+        String actual = formatter.format (new LogRecord (Level.WARNING, "test"), now);
         assertEquals (expected, actual);
     }
 }

@@ -136,7 +136,7 @@ public abstract class Authentication {
     protected void printMessage (String message) {
         System.out.println ("=".repeat (40));
         int numberOfSpaces = message.length () > 36 ? 0 : 40 - message.length ();
-        System.out.printf ("= %s%s =", message, " ".repeat (numberOfSpaces));
+        System.out.printf ("= %s%s =%n", message, " ".repeat (numberOfSpaces));
         System.out.println ("=".repeat (40));
     }
 
